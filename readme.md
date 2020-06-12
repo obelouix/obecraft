@@ -18,6 +18,6 @@ To-Do
   - [ ] Ruby
   - [ ] Tin
   - [ ] Titanium
-  - [ ] Uranium
+  - [x] Uranium (Not textured yet)
   - [ ] Zinc
   - Many more
