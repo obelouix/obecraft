@@ -22,6 +22,9 @@ public class Items {
     public static final RegistryObject<Item> TUTORIAL_DUST = ITEMS.register("tutorial_dust", () -> new Item(new Item.Properties()));
 
 
+    //BlockItems
+    public static final RegistryObject<BlockItem> URANIUM_ORE = ITEMS.register("uranium_ore", () -> new BlockItem(Blocks.URANIUM_ORE.get(), (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS)));
+
     //Vanilla override
    public static final RegistryObject<BlockItem> SOUL_SAND = DEFAULT_ITEMS.register("soul_sand", () -> new BlockItem(Blocks.SOUL_SAND.get(), (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS)));
 

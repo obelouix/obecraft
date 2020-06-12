@@ -1,12 +1,9 @@
 package fr.obelouix.obecraft;
 
 import fr.obelouix.obecraft.items.Items;
+import fr.obelouix.obecraft.worldgen.OreDecorator;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.state.IProperty;
-import net.minecraft.world.storage.loot.conditions.BlockStateProperty;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,8 +23,7 @@ import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("obecraft")
-public class Obecraft
-{
+public class Obecraft {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -51,11 +47,11 @@ public class Obecraft
         fr.obelouix.obecraft.blocks.Blocks.DEFAULT_BLOCKS.register(modEventBus);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        OreDecorator.Decorate();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -63,19 +59,21 @@ public class Obecraft
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+    private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("examplemod", "helloworld", () -> {
+            LOGGER.info("Hello world from the MDK");
+            return "Hello world";
+        });
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
+    private void processIMC(final InterModProcessEvent event) {
         // some example code to receive and process InterModComms from other mods
         LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
+                map(m -> m.getMessageSupplier().get()).
                 collect(Collectors.toList()));
     }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
@@ -85,7 +83,7 @@ public class Obecraft
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
