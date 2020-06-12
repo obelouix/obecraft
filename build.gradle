@@ -55,7 +55,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                obecraft {
                     source sourceSets.main
                 }
             }
@@ -71,7 +71,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                obecraft {
                     source sourceSets.main
                 }
             }
