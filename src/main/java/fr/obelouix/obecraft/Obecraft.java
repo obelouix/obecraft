@@ -46,7 +46,9 @@ public class Obecraft
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Items.ITEMS.register(modEventBus);
+        Items.DEFAULT_ITEMS.register(modEventBus);
         fr.obelouix.obecraft.blocks.Blocks.BLOCKS.register(modEventBus);
+        fr.obelouix.obecraft.blocks.Blocks.DEFAULT_BLOCKS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
