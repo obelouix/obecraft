@@ -30,3 +30,11 @@ jobs:
     # A list of files, directories, and wildcard patterns to cache and restore
         path: |
           ~/.gradle/caches
+          ~/.gradle/wrapper
+          ~/.gradle/wrapper
+        key: forge_gradle
+        restore-keys: |
+           forge_gradle
+           
+          
+          
