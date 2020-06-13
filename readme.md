@@ -1,4 +1,4 @@
-# Obecraft
+# Obecraft            ![Java CI with Gradle](https://github.com/obelouix/Obecraft/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
 if you want to contribute please [**sign your commit**](https://help.github.com/en/github/authenticating-to-github/signing-commits)
 
