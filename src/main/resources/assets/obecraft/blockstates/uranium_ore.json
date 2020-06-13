@@ -1,5 +1,11 @@
+
 {
-  "variants": {
-    "normal": {"model":"obecraft:uranium_ore"}
-  }
+   "variants": {
+      "": [
+         { "model": "obecraft:block/uranium_ore" },
+         { "model": "obecraft:block/uranium_ore", "y": 90 },
+         { "model": "obecraft:block/uranium_ore", "y": 180 },
+         { "model": "obecraft:block/uranium_ore", "y": 270 }
+      ]
+   }
 }
