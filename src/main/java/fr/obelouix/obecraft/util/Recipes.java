@@ -22,7 +22,7 @@ public class Recipes extends RecipeProvider {
                 .patternLine("xxx")
                 .key('x', net.minecraft.block.Blocks.COBBLESTONE)
                 .key('#', Tags.Items.DYES_RED)
-                .setGroup("mytutorial")
+                .setGroup("obecraft")
                 .addCriterion("cobblestone", InventoryChangeTrigger.Instance.forItems(net.minecraft.block.Blocks.COBBLESTONE))
                 .build(consumer);
     }

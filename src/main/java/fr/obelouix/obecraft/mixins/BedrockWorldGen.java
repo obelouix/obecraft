@@ -1,5 +1,6 @@
 package fr.obelouix.obecraft.mixins;
 
+import fr.obelouix.obecraft.Config;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -27,41 +28,44 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
     @Inject(method = "makeBedrock", at = @At("HEAD"), cancellable = true)
     private void makeBedrock(IChunk chunk, Random r, CallbackInfo callbackInfo)
     {
-        BlockPos.Mutable mutable = new BlockPos.Mutable();
-        int ChunkX = chunk.getPos().getXStart();
-        int ChunkZ = chunk.getPos().getZStart();
-
-        GenerationSettings settings = ((NoiseChunkGenerator) (Object) this).getSettings();
-
-        int minY = settings.getBedrockFloorHeight();
-        int maxY = settings.getBedrockRoofHeight();
-
-        Iterator it = BlockPos.getAllInBoxMutable(ChunkX, 0 , ChunkZ, ChunkX + 16, 0, ChunkZ + 16).iterator();
-        while(true)
+        if(Config.ENABLE_FLATBEDROCK.get())
         {
-            BlockPos blockPos;
-            do{
-                if(!it.hasNext())
-                {
-                    callbackInfo.cancel();
-                    return;
-                }
+            BlockPos.Mutable mutable = new BlockPos.Mutable();
+            int ChunkX = chunk.getPos().getXStart();
+            int ChunkZ = chunk.getPos().getZStart();
 
-                blockPos = (BlockPos)it.next();
-                if(maxY > 0 && maxY < 126)
+            GenerationSettings settings = ((NoiseChunkGenerator) (Object) this).getSettings();
+
+            int minY = settings.getBedrockFloorHeight();
+            int maxY = settings.getBedrockRoofHeight();
+
+            Iterator it = BlockPos.getAllInBoxMutable(ChunkX, 0 , ChunkZ, ChunkX + 16, 0, ChunkZ + 16).iterator();
+            while(true)
+            {
+                BlockPos blockPos;
+                do{
+                    if(!it.hasNext())
+                    {
+                        callbackInfo.cancel();
+                        return;
+                    }
+
+                    blockPos = (BlockPos)it.next();
+                    if(maxY > 0 && maxY < 126)
+                    {
+                        mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
+                        chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
+                    }
+                    if(maxY == 127)
+                    {
+                        mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
+                        chunk.setBlockState(mutable,Blocks.SOUL_SAND.getDefaultState(), false);
+                    }
+                } while (maxY >= 255);
                 {
-                    mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
+                    mutable.setPos(blockPos.getX(), minY, blockPos.getZ());
                     chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
                 }
-                if(maxY == 127)
-                {
-                    mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
-                    chunk.setBlockState(mutable,Blocks.SOUL_SAND.getDefaultState(), false);
-                }
-            } while (maxY >= 255);
-            {
-                mutable.setPos(blockPos.getX(), minY, blockPos.getZ());
-                chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
             }
         }
     }

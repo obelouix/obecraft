@@ -1,7 +1,9 @@
 package fr.obelouix.obecraft;
 
+import fr.obelouix.obecraft.effects.Effects;
 import fr.obelouix.obecraft.items.Items;
 import fr.obelouix.obecraft.worldgen.OreDecorator;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -9,13 +11,16 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +33,13 @@ public class Obecraft {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public Obecraft() {
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
+        Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("obecraft-common.toml"));
+
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
@@ -45,6 +55,7 @@ public class Obecraft {
         Items.DEFAULT_ITEMS.register(modEventBus);
         fr.obelouix.obecraft.blocks.Blocks.BLOCKS.register(modEventBus);
         fr.obelouix.obecraft.blocks.Blocks.DEFAULT_BLOCKS.register(modEventBus);
+        Effects.effects.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -57,6 +68,7 @@ public class Obecraft {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        Advancement advancement;
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

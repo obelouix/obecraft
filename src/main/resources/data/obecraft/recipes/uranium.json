@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "obecraft:uranium_ore"
   },
-  "result": "minecraft:gold_ingot",
+  "result": "obecraft:uranium",
   "experience": 1.0,
   "cookingtime": 300
 }

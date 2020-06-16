@@ -19,7 +19,7 @@ public class Items {
     public static final DeferredRegister<Item> DEFAULT_ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, "minecraft");
 
     //Register the tutorial dust with "tutorial_dust" as registry name and default properties
-    public static final RegistryObject<Item> TUTORIAL_DUST = ITEMS.register("tutorial_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> uranium = ITEMS.register("uranium", () -> new UraniumItem(new Item.Properties().group(ItemGroup.MATERIALS)));
 
 
     //BlockItems
