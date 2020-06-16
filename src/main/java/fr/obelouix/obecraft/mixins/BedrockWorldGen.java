@@ -28,8 +28,6 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
     @Inject(method = "makeBedrock", at = @At("HEAD"), cancellable = true)
     private void makeBedrock(IChunk chunk, Random r, CallbackInfo callbackInfo)
     {
-        if(Config.ENABLE_FLATBEDROCK.get())
-        {
             BlockPos.Mutable mutable = new BlockPos.Mutable();
             int ChunkX = chunk.getPos().getXStart();
             int ChunkZ = chunk.getPos().getZStart();
@@ -43,11 +41,16 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
             while(true)
             {
                 BlockPos blockPos;
+
                 do{
+
+                    if(Config.ENABLE_FLATBEDROCK.get())
+                    {
                     if(!it.hasNext())
                     {
                         callbackInfo.cancel();
                         return;
+                    }
                     }
 
                     blockPos = (BlockPos)it.next();
@@ -67,7 +70,6 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
                     chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
                 }
             }
-        }
     }
 
 }

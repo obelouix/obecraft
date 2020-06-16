@@ -23,9 +23,9 @@ public class Config {
     public static ForgeConfigSpec CLIENT_CONFIG;
 
     static {
-        COMMON_BUILDER.comment("Make bedrock layers flat").push(CATEGORY_WORLDGEN)
+       /*COMMON_BUILDER.comment("Make bedrock layers flat").push(CATEGORY_WORLDGEN)
         .define("FlatBedrock", true);;
-        COMMON_BUILDER.pop();
+        COMMON_BUILDER.pop();*/
 
         COMMON_CONFIG = COMMON_BUILDER.build();
     }
