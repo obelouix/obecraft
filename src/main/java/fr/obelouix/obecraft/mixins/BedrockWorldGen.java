@@ -44,15 +44,11 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
 
                 do{
 
-                    if(Config.ENABLE_FLATBEDROCK.get())
-                    {
                     if(!it.hasNext())
                     {
                         callbackInfo.cancel();
                         return;
                     }
-                    }
-
                     blockPos = (BlockPos)it.next();
                     if(maxY > 0 && maxY < 126)
                     {

@@ -14,8 +14,6 @@ public class Config {
 
     public static final  String CATEGORY_WORLDGEN = "worldgen";
 
-    public static ForgeConfigSpec.BooleanValue ENABLE_FLATBEDROCK;
-
     private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
