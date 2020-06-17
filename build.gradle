@@ -177,7 +177,7 @@ publishing {
     }
     publications{
         gpr(MavenPublication){
-            version = "${version}-SNAPSHOT-${date}"
+            version = "${version}-SNAPSHOT"
             from(components.java)
         }
     }
