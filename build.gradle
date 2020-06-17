@@ -177,7 +177,7 @@ publishing {
     }
     publications{
         gpr(MavenPublication){
-            version = fg.deobf("${version}-SNAPSHOT")
+            version = fg.deobf("${version}-SNAPSHOT"-new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"))
             from(components.java)
         }
     }
