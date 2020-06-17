@@ -25,7 +25,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.1'
+version = '0.0.1-SNAPSHOT'
 group = 'fr.obelouix.obecraft' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'obecraft'
 
@@ -168,16 +168,15 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/obelouix/Obecraft")
+            url = uri("https://maven.pkg.github.com/obelouix/obecraft")
             credentials {
-                username = "obelouix"
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
     }
     publications{
         gpr(MavenPublication){
-            version = "${version}-SNAPSHOT"
             from(components.java)
         }
     }
