@@ -168,11 +168,18 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/obelouix/obecraft")
+            url = uri("https://maven.pkg.github.com/obelouix/Obecraft")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                username = "obelouix"
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
     }
+    publications{
+        gpr(MavenPublication){
+            version = "${version}-SNAPSHOT-${date}"
+            from(components.java)
+        }
+    }
+
 }
