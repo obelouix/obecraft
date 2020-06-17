@@ -170,7 +170,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/obelouix/obecraft")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                username = "obelouix"
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
