@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "obecraft",
+  "version": "${version}",
+  "name": "Obecraft",
+  "description": "no desc",
+  "authors": [
+    "obelouix"
+  ],
+  "contributors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/obecraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.obelouix.Obecraft"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "obecraft.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}
