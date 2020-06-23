@@ -1,5 +1,7 @@
 package fr.obelouix;
 
+import fr.obelouix.block.Blocks;
+import fr.obelouix.item.Items;
 import net.fabricmc.api.ModInitializer;
 
 import org.apache.logging.log4j.Level;
@@ -17,6 +19,9 @@ public class Obecraft implements ModInitializer {
     public void onInitialize() {
         log(Level.INFO, "Initializing");
         //TODO: Initializer
+        Blocks.registerBlocks();
+        Blocks.registerBlockItems();
+        Items.registerItems();
     }
 
     public static void log(Level level, String message){
