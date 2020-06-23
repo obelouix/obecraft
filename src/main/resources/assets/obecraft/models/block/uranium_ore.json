@@ -1,0 +1,6 @@
+{
+   "parent": "block/cube_all",
+   "textures": {
+      "all": "obecraft:blocks/uranium_ore"
+   }
+}
