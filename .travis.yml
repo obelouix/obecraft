@@ -2,9 +2,9 @@
 language: java
 
 dist: trusty
-# Tell Travis this is a Java 8 project.
+# Tell Travis this is a Java 14 project.
 jdk:
-  - oraclejdk8
+  - oraclejdk14
 
 # Tell Travis we want container-based builds.
 sudo: false
