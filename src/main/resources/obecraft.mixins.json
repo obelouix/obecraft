@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "fr.obelouix.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": ["FlatBedrock"],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
