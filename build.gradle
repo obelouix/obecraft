@@ -25,7 +25,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.1-SNAPSHOT'
+version = '1.16.1-0.0.1-SNAPSHOT'
 group = 'fr.obelouix.obecraft' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'obecraft'
 
