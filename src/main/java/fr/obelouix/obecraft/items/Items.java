@@ -21,6 +21,8 @@ public class Items {
     //Register the tutorial dust with "tutorial_dust" as registry name and default properties
     public static final RegistryObject<Item> uranium = ITEMS.register("uranium", () -> new UraniumItem(new Item.Properties().group(ItemGroup.MATERIALS)));
 
+    //Tools
+    public static final  RegistryObject<Item> OBSIDIAN_PICKAGE = ITEMS.register("obsidian_pickaxe", () -> new ItemPickaxe(ToolTiers.OBSIDIAN,1.5F, -3.0F, (new Item.Properties())));
 
     //BlockItems
     public static final RegistryObject<BlockItem> URANIUM_ORE = ITEMS.register("uranium_ore", () -> new BlockItem(Blocks.URANIUM_ORE.get(), (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS)));
