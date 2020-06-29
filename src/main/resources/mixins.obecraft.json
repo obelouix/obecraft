@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
 <<<<<<< Updated upstream:src/main/resources/mixins.obecraft.json
+<<<<<<< Updated upstream:src/main/resources/mixins.obecraft.json
   "package": "fr.obelouix.obecraft.mixins",
   "refmap": "mixins.obecraft.refmap.json",
   "mixins": [
@@ -10,6 +11,8 @@
     "BedrockWorldGen"
   ],
 =======
+=======
+>>>>>>> Stashed changes:src/main/resources/obecraft.mixins.json
   "mixins": [
     "FlatBedrock"
   ],
