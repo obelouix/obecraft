@@ -15,8 +15,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class Items {
 
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, "obecraft");
-    public static final DeferredRegister<Item> DEFAULT_ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, "minecraft");
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "obecraft");
+    public static final DeferredRegister<Item> DEFAULT_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "minecraft");
 
     //Register the tutorial dust with "tutorial_dust" as registry name and default properties
     public static final RegistryObject<Item> uranium = ITEMS.register("uranium", () -> new UraniumItem(new Item.Properties().group(ItemGroup.MATERIALS)));

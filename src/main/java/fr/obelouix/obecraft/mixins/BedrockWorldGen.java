@@ -8,8 +8,9 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
+import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
 import net.minecraft.world.gen.NoiseChunkGenerator;
+import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,8 +22,9 @@ import java.util.Random;
 @Mixin(NoiseChunkGenerator.class)
 public abstract class BedrockWorldGen extends ChunkGenerator {
 
-    public BedrockWorldGen(IWorld worldIn, BiomeProvider biomeProviderIn, GenerationSettings generationSettingsIn) {
-        super(worldIn, biomeProviderIn, generationSettingsIn);
+
+    public BedrockWorldGen(BiomeProvider p_i231888_1_, DimensionStructuresSettings p_i231888_2_) {
+        super(p_i231888_1_, p_i231888_2_);
     }
 
     @Inject(method = "makeBedrock", at = @At("HEAD"), cancellable = true)
@@ -32,10 +34,10 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
             int ChunkX = chunk.getPos().getXStart();
             int ChunkZ = chunk.getPos().getZStart();
 
-            GenerationSettings settings = ((NoiseChunkGenerator) (Object) this).getSettings();
+            //GenerationSettings settings = ((NoiseChunkGenerator) (Object) this).getSettings();
 
-            int minY = settings.getBedrockFloorHeight();
-            int maxY = settings.getBedrockRoofHeight();
+            int minY =  0;//settings.getBedrockFloorHeight();
+            int maxY =  256;//settings.getBedrockRoofHeight();
 
             Iterator it = BlockPos.getAllInBoxMutable(ChunkX, 0 , ChunkZ, ChunkX + 16, 0, ChunkZ + 16).iterator();
             while(true)

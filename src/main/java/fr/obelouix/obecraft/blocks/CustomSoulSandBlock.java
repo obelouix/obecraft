@@ -23,7 +23,6 @@ public class CustomSoulSandBlock extends SoulSandBlock {
         super(properties);
     }
 
-    @Override
     public boolean canEntitySpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
         return false;
     }
