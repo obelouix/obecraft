@@ -21,7 +21,7 @@ public class BlastingRecipes extends RecipeProvider {
                 .build(consumer);
 
         CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(
-                net.minecraft.block.Blocks.OBSIDIAN.asItem()), Items.OBSIDIAN_INGOT.get(), 1.0f, 300)
+                net.minecraft.block.Blocks.OBSIDIAN.asItem()), Items.OBSIDIAN_INGOT.get(), 1.0f, 900)
                 .addCriterion("obsidian", InventoryChangeTrigger.Instance.forItems(net.minecraft.block.Blocks.OBSIDIAN))
                 .build(consumer);
 
