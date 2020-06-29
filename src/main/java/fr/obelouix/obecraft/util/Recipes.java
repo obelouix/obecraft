@@ -17,12 +17,19 @@ public class Recipes extends RecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
 
+        ShapedRecipeBuilder.shapedRecipe(Items.IRON_STICK.get())
+                .patternLine(" S ")
+                .patternLine(" S ")
+                .key('S', Items.IRON_STICK.get())
+                .addCriterion("iron_ingot",InventoryChangeTrigger.Instance.forItems(net.minecraft.item.Items.IRON_INGOT))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(Items.OBSIDIAN_PICKAGE.get())
                 .patternLine("OOO")
                 .patternLine(" S ")
                 .patternLine(" S ")
-                .key('O', net.minecraft.block.Blocks.OBSIDIAN)
-                .key('S', net.minecraft.item.Items.STICK)
+                .key('O', Items.OBSIDIAN_INGOT.get())
+                .key('S', Items.IRON_STICK.get())
                 .addCriterion("obsidian", InventoryChangeTrigger.Instance.forItems(net.minecraft.block.Blocks.OBSIDIAN))
                 .build(consumer);
 
