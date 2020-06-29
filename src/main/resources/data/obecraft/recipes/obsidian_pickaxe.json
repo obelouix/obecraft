@@ -7,10 +7,10 @@
   ],
   "key": {
     "O": {
-      "item": "minecraft:obsidian"
+      "item": "obecraft:obsidian_ingot"
     },
     "S": {
-      "item": "minecraft:stick"
+      "item": "obecraft:iron_stick"
     }
   },
   "result": {
