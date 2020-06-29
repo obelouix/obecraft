@@ -2,12 +2,20 @@
   "required": true,
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
+<<<<<<< Updated upstream:src/main/resources/mixins.obecraft.json
   "package": "fr.obelouix.obecraft.mixins",
   "refmap": "mixins.obecraft.refmap.json",
   "mixins": [
     "MixinsTest",
     "BedrockWorldGen"
   ],
+=======
+  "mixins": [
+    "FlatBedrock"
+  ],
+  "client": [],
+  "server": [],
+>>>>>>> Stashed changes:src/main/resources/obecraft.mixins.json
   "injectors": {
     "defaultRequire": 1
   }
