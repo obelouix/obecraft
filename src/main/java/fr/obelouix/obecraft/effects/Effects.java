@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class Effects {
 
-    public static DeferredRegister<Effect> effects = new DeferredRegister<>(ForgeRegistries.POTIONS, "obecraft");
+    public static DeferredRegister<Effect> effects = DeferredRegister.create(ForgeRegistries.POTIONS, "obecraft");
 
     public static final RegistryObject<Effect> radiation = effects.register("radiation", () -> new RadiationEffect(EffectType.HARMFUL, net.minecraft.potion.Effects.POISON.getLiquidColor()));
 

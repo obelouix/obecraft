@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.Mixin;
 
 public class Blocks {
 
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, "obecraft");
-    public static final DeferredRegister<Block> DEFAULT_BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, "minecraft");
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS , "obecraft");
+    public static final DeferredRegister<Block> DEFAULT_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "minecraft");
 
     //ores
     public static final RegistryObject<Block> URANIUM_ORE = BLOCKS.register("uranium_ore", ()-> new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5f, 3.0f)));
