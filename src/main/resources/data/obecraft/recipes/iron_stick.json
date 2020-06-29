@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "obecraft:iron_stick"
+    }
+  },
+  "result": {
+    "item": "obecraft:iron_stick"
+  }
+}

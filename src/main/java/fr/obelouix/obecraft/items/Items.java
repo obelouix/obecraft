@@ -18,8 +18,9 @@ public class Items {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "obecraft");
     public static final DeferredRegister<Item> DEFAULT_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "minecraft");
 
-    //Register the tutorial dust with "tutorial_dust" as registry name and default properties
-    public static final RegistryObject<Item> uranium = ITEMS.register("uranium", () -> new UraniumItem(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> URANIUM = ITEMS.register("uranium", () -> new UraniumItem(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick", () -> new IronStickItem(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> OBSIDIAN_INGOT = ITEMS.register("obsidian_ingot", () -> new ObsidianIngotItem(new Item.Properties().group(ItemGroup.MATERIALS)));
 
     //Tools
     public static final  RegistryObject<Item> OBSIDIAN_PICKAGE = ITEMS.register("obsidian_pickaxe", () -> new ItemPickaxe(ToolTiers.OBSIDIAN,1.5F, -3.0F, (new Item.Properties())));
