@@ -20,7 +20,7 @@ public class Recipes extends RecipeProvider {
         ShapedRecipeBuilder.shapedRecipe(Items.IRON_STICK.get())
                 .patternLine(" S ")
                 .patternLine(" S ")
-                .key('S', Items.IRON_STICK.get())
+                .key('S', net.minecraft.item.Items.IRON_INGOT)
                 .addCriterion("iron_ingot",InventoryChangeTrigger.Instance.forItems(net.minecraft.item.Items.IRON_INGOT))
                 .build(consumer);
 
