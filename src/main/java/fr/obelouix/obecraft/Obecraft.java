@@ -1,6 +1,7 @@
 package fr.obelouix.obecraft;
 
 import fr.obelouix.obecraft.effects.Effects;
+import fr.obelouix.obecraft.fix.Anvil;
 import fr.obelouix.obecraft.items.Items;
 import fr.obelouix.obecraft.worldgen.OreDecorator;
 import net.minecraft.advancements.Advancement;
@@ -49,7 +50,7 @@ public class Obecraft {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
+        
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Items.ITEMS.register(modEventBus);
         Items.DEFAULT_ITEMS.register(modEventBus);
