@@ -2,6 +2,7 @@ package fr.obelouix.obecraft.mixins;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.datafixers.DataFixUtils;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
@@ -10,6 +11,9 @@ import net.minecraft.util.FrameTimer;
 import net.minecraft.util.SharedConstants;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.LightType;
+import net.minecraft.world.World;
+import net.minecraft.world.lighting.WorldLightManager;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -17,6 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Mixin(DebugOverlayGui.class)
 public abstract class DebugOverlay extends AbstractGui {
@@ -61,6 +66,7 @@ public abstract class DebugOverlay extends AbstractGui {
                 + TextFormatting.DARK_GREEN + " (" + ClientBrandRetriever.getClientModName() + ")");
 
         BlockPos blockpos = Objects.requireNonNull(this.mc.getRenderViewEntity()).func_233580_cy_();
+        World world = this.getWorld();
 
         int fps = Integer.parseInt(this.mc.debug.substring(0, 2).replaceAll("\\s+",""));
         String stringFPS = fps + " fps" + TextFormatting.RESET + this.mc.debug.substring(7).replaceFirst("T:", "graphics: ");
@@ -88,7 +94,28 @@ public abstract class DebugOverlay extends AbstractGui {
         list.add(String.format(TextFormatting.GOLD + "Block: " +TextFormatting.RED + "%d " + TextFormatting.GREEN + "%d " + TextFormatting.DARK_AQUA + "%d",
                 blockpos.getX(), blockpos.getY(), blockpos.getZ() ));
 
+        int skyLight = Objects.requireNonNull(this.mc.world).getLightFor(LightType.SKY, blockpos);
+        int blockLight = this.mc.world.getLightFor(LightType.BLOCK, blockpos);
+        String stringSkylight = String.valueOf((skyLight < 8) ? TextFormatting.RED : TextFormatting.GREEN) + skyLight;
+        String stringBlockLight = String.valueOf((blockLight < 8) ? TextFormatting.RED : TextFormatting.GREEN) + blockLight;
+        //if(skyLight < 8)
+        //    stringSkylight = TextFormatting.RED + String.valueOf(skyLight);
+
+        list.add("Client Light:" + " (sky: " + stringSkylight + TextFormatting.RESET + ", block: " + stringBlockLight + TextFormatting.RESET +  ")" );
+
+        WorldLightManager worldlightmanager = world.getChunkProvider().getLightManager();
+        list.add("Server Light: (" + "sky: " + ((worldlightmanager.getLightEngine(LightType.SKY).getLightFor(blockpos) < 8) ? TextFormatting.RED : TextFormatting.GREEN)
+                + worldlightmanager.getLightEngine(LightType.SKY).getLightFor(blockpos)
+                + TextFormatting.RESET + ", block: "
+                + (worldlightmanager.getLightEngine(LightType.BLOCK).getLightFor(blockpos) < 8 ? TextFormatting.RED : TextFormatting.GREEN)
+                + worldlightmanager.getLightEngine(LightType.BLOCK).getLightFor(blockpos)
+                + TextFormatting.RESET + ")");
 
         return list;
+    }
+
+    protected World getWorld()
+    {
+        return DataFixUtils.orElse(Optional.ofNullable(this.mc.getIntegratedServer()).flatMap((p_212917_1_) -> Optional.ofNullable(p_212917_1_.getWorld(Objects.requireNonNull(this.mc.world).func_234923_W_()))), this.mc.world);
     }
 }
