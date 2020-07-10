@@ -8,6 +8,7 @@ import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.overlay.DebugOverlayGui;
 import net.minecraft.util.FrameTimer;
 import net.minecraft.util.SharedConstants;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -58,6 +59,9 @@ public abstract class DebugOverlay extends AbstractGui {
 
         List<String> list = Lists.newArrayList("Minecraft " + TextFormatting.GREEN + SharedConstants.getVersion().getName()
                 + TextFormatting.DARK_GREEN + " (" + ClientBrandRetriever.getClientModName() + ")");
+
+        BlockPos blockpos = Objects.requireNonNull(this.mc.getRenderViewEntity()).func_233580_cy_();
+
         int fps = Integer.parseInt(this.mc.debug.substring(0, 2).replaceAll("\\s+",""));
         String stringFPS = fps + " fps" + TextFormatting.RESET + this.mc.debug.substring(7).replaceFirst("T:", "graphics: ");
         if(fps < 30)
@@ -77,8 +81,14 @@ public abstract class DebugOverlay extends AbstractGui {
                 + TextFormatting.GREEN + "%.3f"
                 + TextFormatting.RESET + " / "
                 + TextFormatting.DARK_AQUA + "%.3f";
+
         list.add("");
+
         list.add(String.format(coords, Objects.requireNonNull(this.mc.getRenderViewEntity()). getPosX(), this.mc.getRenderViewEntity().getPosY(), this.mc.getRenderViewEntity().getPosZ()));
+        list.add(String.format(TextFormatting.GOLD + "Block: " +TextFormatting.RED + "%d " + TextFormatting.GREEN + "%d " + TextFormatting.DARK_AQUA + "%d",
+                blockpos.getX(), blockpos.getY(), blockpos.getZ() ));
+
+
         return list;
     }
 }
