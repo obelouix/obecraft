@@ -8,9 +8,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.DimensionSettings;
 import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
 import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+import net.minecraft.world.gen.settings.NoiseSettings;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,17 +29,17 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
         super(p_i231888_1_, p_i231888_2_);
     }
 
-    @Inject(method = "makeBedrock", at = @At("HEAD"), cancellable = true)
+  /*  @Inject(method = "makeBedrock", at = @At("HEAD"), cancellable = true)
     private void makeBedrock(IChunk chunk, Random r, CallbackInfo callbackInfo)
     {
             BlockPos.Mutable mutable = new BlockPos.Mutable();
             int ChunkX = chunk.getPos().getXStart();
             int ChunkZ = chunk.getPos().getZStart();
-
+           NoiseSettings dimensionSettings = (NoiseChunkGenerator)this.();
             //GenerationSettings settings = ((NoiseChunkGenerator) (Object) this).getSettings();
 
-            int minY =  0;//settings.getBedrockFloorHeight();
-            int maxY =  256;//settings.getBedrockRoofHeight();
+            int minY =  dimensionSettings.func_236175_f_();
+            int maxY =  dimensionSettings.func_236174_e_();
 
             Iterator it = BlockPos.getAllInBoxMutable(ChunkX, 0 , ChunkZ, ChunkX + 16, 0, ChunkZ + 16).iterator();
             while(true)
@@ -52,7 +54,7 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
                         return;
                     }
                     blockPos = (BlockPos)it.next();
-                    if(maxY > 0 && maxY < 126)
+                    if(maxY == 255)
                     {
                         mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
                         chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
@@ -69,5 +71,7 @@ public abstract class BedrockWorldGen extends ChunkGenerator {
                 }
             }
     }
+
+    protected abstract NoiseSettings func_236113_b_();*/
 
 }
