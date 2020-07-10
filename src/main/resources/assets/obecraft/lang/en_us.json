@@ -4,5 +4,6 @@
   "obecraft.tooltip.radioactive_item": "Highly radioactive",
   "item.obecraft.obsidian_pickaxe": "obsidian pickaxe",
   "item.obecraft.iron_stick": "iron stick",
-  "item.obecraft.obsidian_ingot": "obsidian ingot"
+  "item.obecraft.obsidian_ingot": "obsidian ingot",
+  "tileentity.obecraft.iron_furnace": "iron furnace"
 }
