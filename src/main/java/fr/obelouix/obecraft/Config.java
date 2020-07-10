@@ -13,14 +13,19 @@ import java.nio.file.Path;
 public class Config {
 
     public static final  String CATEGORY_WORLDGEN = "worldgen";
+    public static final  String CATEGORY_SERVER_ECONOMY = "Economy";
 
     private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
+    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
 
     public static ForgeConfigSpec COMMON_CONFIG;
     public static ForgeConfigSpec CLIENT_CONFIG;
+    public static ForgeConfigSpec SERVER_CONFIG;
 
     static {
+        SERVER_BUILDER.comment("Enable economy on the server").push(CATEGORY_SERVER_ECONOMY)
+                .define("enable", true);
        /*COMMON_BUILDER.comment("Make bedrock layers flat").push(CATEGORY_WORLDGEN)
         .define("FlatBedrock", true);;
         COMMON_BUILDER.pop();*/
@@ -41,7 +46,7 @@ public class Config {
 
     @SubscribeEvent
     public static void onLoad(final ModConfig.Loading configEvent) {
-
+        
     }
 
     @SubscribeEvent
