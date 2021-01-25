@@ -49,8 +49,7 @@ jobs:
       run: chmod +x gradlew
     - name:  publication
       run: ./gradlew publish
-
-    
-           
+      env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           
           
