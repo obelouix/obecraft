@@ -37,7 +37,7 @@ jobs:
            forge_gradle
   publish:
     needs: [build]
-    if: (job.build.status == 'success')
+    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
       - name:  publication
