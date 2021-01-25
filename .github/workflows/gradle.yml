@@ -48,8 +48,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name:  publication
-      run: ./gradlew publish
       env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          
-          
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: ./gradlew publish
