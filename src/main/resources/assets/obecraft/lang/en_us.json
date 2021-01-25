@@ -1,9 +1,5 @@
 {
-  "block.obecraft.uranium_ore": "uranium ore",
-  "item.obecraft.uranium": "uranium",
-  "obecraft.tooltip.radioactive_item": "Highly radioactive",
-  "item.obecraft.obsidian_pickaxe": "obsidian pickaxe",
-  "item.obecraft.iron_stick": "iron stick",
-  "item.obecraft.obsidian_ingot": "obsidian ingot",
-  "tileentity.obecraft.iron_furnace": "iron furnace"
+  "_comment": "Blocks",
+  "block.obecraft.birch_workbench": "Birch Crafting Table",
+  "block.obecraft.spruce_workbench": "Spruce Crafting Table"
 }

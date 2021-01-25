@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "fr.obelouix.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "obecraft.mixins.refmap.json",
+  "mixins": [
+    "FlatBedrock",
+    "container.inventory.WorkbenchContainerMixin",
+    "world.gen.ChunkGeneratorMixin"
+  ],
+  "client": [
+    "DebugOverlay"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
