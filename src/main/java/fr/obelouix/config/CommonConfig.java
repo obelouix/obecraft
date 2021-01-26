@@ -3,6 +3,7 @@ package fr.obelouix.config;
 import fr.obelouix.obecraft.Obecraft;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
+import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class CommonConfig {
@@ -16,9 +17,9 @@ public class CommonConfig {
                 .translation(Obecraft.MODID + ".config.common." + "flatBedrock")
                 .define("flatBedrock", true);
         removeWorldTopBedrock = builder.comment("remove the bedrock on the top of the world (e.g nether world)\n" +
-                "This only work with flatBedrock enabled")
+                "This only work with flatBedrock enabled (Does not require a game restart)")
                 .translation(Obecraft.MODID + ".config.common." + "removeWorldTopBedrock")
-                .define("removeWorldTopBedrock", true);
+                .define("removeWorldTopBedrock", false);
 
         builder.pop();
     }

@@ -60,3 +60,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
+# Here's another dependency
+[[dependencies.obecraft]]
+modId="jei"
+mandatory=false
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[1.16.4-7.6.1.65,)"
+ordering="BEFORE"
+side="BOTH"
