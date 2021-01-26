@@ -6,7 +6,8 @@
   "mixins": [
     "FlatBedrock",
     "container.inventory.WorkbenchContainerMixin",
-    "world.gen.ChunkGeneratorMixin"
+    "world.gen.ChunkGeneratorMixin",
+    "gui.InventoryScreenMixin"
   ],
   "client": [
     "DebugOverlay"

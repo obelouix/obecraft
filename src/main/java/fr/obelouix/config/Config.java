@@ -16,6 +16,7 @@ public class Config {
     public static final ForgeConfigSpec CLIENT_SPEC;
     private static boolean flatBedrock;
     private static boolean removeWorldTopBedrock;
+    private static boolean removeRecipeButton;
 
     static {
         final Pair<CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
@@ -25,6 +26,10 @@ public class Config {
         final Pair<ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
         CLIENT_SPEC = specPairClient.getRight();
         CLIENT = specPairClient.getLeft();
+    }
+
+    public static boolean isRemoveRecipeButton() {
+        return removeRecipeButton;
     }
 
     public static boolean isRemoveWorldTopBedrock() {
@@ -51,7 +56,7 @@ public class Config {
     }
 
     public static void bakeClientConfig(){
-
+        removeRecipeButton = CLIENT.getRemoveRecipeButton().get();
     }
 
 }

@@ -47,10 +47,13 @@ public abstract class FlatBedrock {
                         mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
                         chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
                     }
-                    if(Config.isRemoveWorldTopBedrock()){
-                        if (maxY == 127) {
-                            mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
+                    if (maxY == 127) {
+                        mutable.setPos(blockPos.getX(), maxY, blockPos.getZ());
+                        if(Config.isRemoveWorldTopBedrock()) {
                             chunk.setBlockState(mutable, Blocks.SOUL_SAND.getDefaultState(), false);
+                        }
+                        else {
+                            chunk.setBlockState(mutable, Blocks.BEDROCK.getDefaultState(), false);
                         }
                     }
                 } while (maxY >= 255);
