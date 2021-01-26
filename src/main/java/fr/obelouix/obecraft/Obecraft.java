@@ -1,6 +1,7 @@
 package fr.obelouix.obecraft;
 
 import fr.obelouix.config.Config;
+import fr.obelouix.gui.ConfigScreen;
 import fr.obelouix.registries.BlockRegistry;
 import fr.obelouix.registries.ItemRegistry;
 import fr.obelouix.util.datagen.DataGenerators;
@@ -14,10 +15,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -49,7 +53,11 @@ public class Obecraft {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
+        // Register the configuration GUI factory
+        ModLoadingContext.get().registerExtensionPoint(
+                ExtensionPoint.CONFIGGUIFACTORY,
+                () -> (mc, screen) -> new ConfigScreen()
+        );
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -104,7 +112,6 @@ public class Obecraft {
             event.player.sendMessage(new TranslationTextComponent("message.obecraft.jei_enabled", modName), event.player.getUniqueID());
             jeiEnabledWarn = true;
         }
-
     }
 
 
