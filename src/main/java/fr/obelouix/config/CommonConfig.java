@@ -13,7 +13,7 @@ public class CommonConfig {
 
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("World generation");
-        flatBedrock = builder.comment("Generate bedrock only on one layer")
+        flatBedrock = builder.comment("Generate bedrock only on one layer (Does not require a game restart)")
                 .translation(Obecraft.MODID + ".config.common." + "flatBedrock")
                 .define("flatBedrock", true);
         removeWorldTopBedrock = builder.comment("remove the bedrock on the top of the world (e.g nether world)\n" +
