@@ -12,13 +12,19 @@ public class Config {
 
     public static final CommonConfig COMMON;
     public static final ForgeConfigSpec COMMON_SPEC;
+    public static final ClientConfig CLIENT;
+    public static final ForgeConfigSpec CLIENT_SPEC;
     private static boolean flatBedrock;
     private static boolean removeWorldTopBedrock;
 
     static {
-        final Pair<CommonConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
-        COMMON_SPEC = specPair.getRight();
-        COMMON = specPair.getLeft();
+        final Pair<CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
+        COMMON_SPEC = specPairCommon.getRight();
+        COMMON = specPairCommon.getLeft();
+
+        final Pair<ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
+        CLIENT_SPEC = specPairClient.getRight();
+        CLIENT = specPairClient.getLeft();
     }
 
     public static boolean isRemoveWorldTopBedrock() {
@@ -34,11 +40,18 @@ public class Config {
         if (configEvent.getConfig().getSpec() == Config.COMMON_SPEC) {
             bakeCommonConfig();
         }
+        if(configEvent.getConfig().getSpec() == Config.CLIENT_SPEC){
+            bakeClientConfig();
+        }
     }
 
     public static void bakeCommonConfig() {
         flatBedrock = COMMON.getFlatBedrock().get();
         removeWorldTopBedrock = COMMON.getRemoveWorldTopBedrock().get();
+    }
+
+    public static void bakeClientConfig(){
+
     }
 
 }
