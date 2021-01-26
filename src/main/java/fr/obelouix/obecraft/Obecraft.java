@@ -1,6 +1,5 @@
 package fr.obelouix.obecraft;
 
-import fr.obelouix.config.CommonConfig;
 import fr.obelouix.config.Config;
 import fr.obelouix.registries.BlockRegistry;
 import fr.obelouix.registries.ItemRegistry;
@@ -23,6 +22,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.stream.Collectors;
 
 @Mod(Obecraft.MODID)
@@ -44,8 +44,8 @@ public class Obecraft {
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);
+        Config.setup();
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 

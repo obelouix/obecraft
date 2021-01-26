@@ -3,9 +3,16 @@ package fr.obelouix.config;
 import fr.obelouix.obecraft.Obecraft;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.commons.lang3.tuple.Pair;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Mod.EventBusSubscriber(modid = Obecraft.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
@@ -26,6 +33,18 @@ public class Config {
         final Pair<ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
         CLIENT_SPEC = specPairClient.getRight();
         CLIENT = specPairClient.getLeft();
+    }
+
+    public static void setup(){
+        Path configPath = FMLPaths.CONFIGDIR.get();
+        Path obeConfigPath = Paths.get(configPath.toAbsolutePath().toString(), "obecraft");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC, "obecraft/common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC, "obecraft/client.toml");
+        try {
+            Files.createDirectory(obeConfigPath);
+        } catch (IOException e) {
+            System.out.println("failed to create obecraft mod directory" + e);
+        }
     }
 
     public static boolean isRemoveRecipeButton() {
