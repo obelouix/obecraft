@@ -11,7 +11,8 @@
   "client": [
     "DebugOverlay",
     "gui.InventoryScreenMixin",
-    "gui.CraftingScreenMixin"
+    "gui.CraftingScreenMixin",
+    "gui.AbstractFurnaceScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
