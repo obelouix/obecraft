@@ -6,11 +6,12 @@
   "mixins": [
     "FlatBedrock",
     "container.inventory.WorkbenchContainerMixin",
-    "world.gen.ChunkGeneratorMixin",
-    "gui.InventoryScreenMixin"
+    "world.gen.ChunkGeneratorMixin"
   ],
   "client": [
-    "DebugOverlay"
+    "DebugOverlay",
+    "gui.InventoryScreenMixin",
+    "gui.CraftingScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
