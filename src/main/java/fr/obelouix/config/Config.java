@@ -89,4 +89,10 @@ public class Config {
         removeRecipeButton = CLIENT.getRemoveRecipeButton().get();
     }
 
+    public static void saveCommon(){
+        COMMON_SPEC.save();
+    }
+    public static void saveClient(){
+        CLIENT_SPEC.save();
+    }
 }
