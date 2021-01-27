@@ -12,7 +12,8 @@
     "DebugOverlay",
     "gui.InventoryScreenMixin",
     "gui.CraftingScreenMixin",
-    "gui.AbstractFurnaceScreenMixin"
+    "gui.AbstractFurnaceScreenMixin",
+    "gui.IngameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

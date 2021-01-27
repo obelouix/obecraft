@@ -2,5 +2,7 @@
   "_comment": "Blocks",
   "block.obecraft.birch_workbench": "Birch Crafting Table",
   "block.obecraft.spruce_workbench": "Spruce Crafting Table",
-  "message.obecraft.jei_enabled": "As {0} is present, you can disable the recipe book in the obecraft client config"
+  "message.obecraft.jei_enabled": "As {0} is present, you can disable the recipe book in the obecraft client config",
+  "obecraft.configGUI.title": "{0} configuration",
+  "obecraft.configGUI.flatbedrock.title": "set bedrock generation to one layer"
 }

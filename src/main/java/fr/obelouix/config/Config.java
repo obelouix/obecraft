@@ -1,8 +1,10 @@
 package fr.obelouix.config;
 
+import fr.obelouix.gui.ConfigScreen;
 import fr.obelouix.obecraft.Obecraft;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -40,6 +42,11 @@ public class Config {
         Path obeConfigPath = Paths.get(configPath.toAbsolutePath().toString(), "obecraft");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC, "obecraft/common.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC, "obecraft/client.toml");
+        // Register the configuration GUI factory
+        ModLoadingContext.get().registerExtensionPoint(
+                ExtensionPoint.CONFIGGUIFACTORY,
+                () -> (mc, screen) -> new ConfigScreen(screen)
+        );
         try {
             Files.createDirectory(obeConfigPath);
         } catch (IOException e) {
@@ -57,6 +64,10 @@ public class Config {
 
     public static boolean isFlatBedrock() {
         return flatBedrock;
+    }
+
+    public static void setFlatBedrock(boolean flatBedrock) {
+        Config.flatBedrock = flatBedrock;
     }
 
     @SubscribeEvent
