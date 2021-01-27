@@ -59,7 +59,7 @@ public class ConfigScreen extends Screen {
                 this.height - DONE_BUTTON_TOP_OFFSET,
                 BUTTON_WIDTH, BUTTON_HEIGHT,
                 new TranslationTextComponent("gui.done"),
-                button -> this.onClose()));
+                button -> this.closeScreen()));
     }
 
     @Override
@@ -70,9 +70,9 @@ public class ConfigScreen extends Screen {
     }
 
     @Override
-    public void onClose() {
+    public void closeScreen() {
        // ModSettings.save();
         // Display the parent screen
-        super.onClose();
+        this.minecraft.displayGuiScreen(parentScreen);
     }
 }
