@@ -1,1 +1,1 @@
-# Obecraft            ![Java CI with Gradle](https://github.com/obelouix/Obecraft/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
+# Obecraft            ![Java CI with Gradle](https://github.com/obelouix/Obecraft/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master) [![DeepSource](https://deepsource.io/gh/obelouix/Obecraft.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/obelouix/Obecraft/?ref=repository-badge)
