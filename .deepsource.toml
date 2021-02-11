@@ -1,6 +1,6 @@
 version = 1
 
-test_patterns = ["src/**.java"]
+test_patterns = ["src/main/java/**"]
 
 [[analyzers]]
 name = "java"
