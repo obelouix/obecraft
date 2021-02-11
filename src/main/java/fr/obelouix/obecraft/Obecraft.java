@@ -3,7 +3,9 @@ package fr.obelouix.obecraft;
 import fr.obelouix.config.Config;
 import fr.obelouix.gui.ConfigScreen;
 import fr.obelouix.registries.BlockRegistry;
+import fr.obelouix.registries.DimensionRegistry;
 import fr.obelouix.registries.ItemRegistry;
+import fr.obelouix.registries.TileEntityRegistry;
 import fr.obelouix.util.datagen.DataGenerators;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -62,6 +64,8 @@ public class Obecraft {
         new ItemRegistry(modEventBus);
         //Register all mod blocks
         new BlockRegistry(modEventBus);
+        new DimensionRegistry(modEventBus);
+        new TileEntityRegistry(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(DataGenerators.class);
     }

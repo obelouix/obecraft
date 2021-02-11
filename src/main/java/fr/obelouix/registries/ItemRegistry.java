@@ -17,6 +17,7 @@ public class ItemRegistry {
     //public RegistryObject<Items> test;
     public static RegistryObject<Item> BIRCH_WORKBENCH;
     public static RegistryObject<Item> SPRUCE_WORKBENCH;
+    public static RegistryObject<Item> MINING_TELEPORTER;
     public RegistryObject<Item> cobbleChest;
 
     public ItemRegistry(IEventBus iEventBus){
@@ -26,6 +27,7 @@ public class ItemRegistry {
         if(ModList.get().isLoaded("ironchest")){
             cobbleChest = ITEMS.register("cobble_chest", ()-> new BlockItem(BlockRegistry.cobbleChest.get(), (new Item.Properties()).group(IronChests.IRONCHESTS_ITEM_GROUP)));
         }
+        MINING_TELEPORTER = ITEMS.register("mining_teleporter", () -> new BlockItem(BlockRegistry.MINING_TELEPORTER.get(), (new Item.Properties().group(ItemGroup.DECORATIONS))));
         ITEMS.register(iEventBus);
     }
 }

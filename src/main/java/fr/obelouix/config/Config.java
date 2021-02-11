@@ -25,6 +25,7 @@ public class Config {
     public static final ForgeConfigSpec CLIENT_SPEC;
     private static boolean flatBedrock;
     private static boolean removeWorldTopBedrock;
+    private static boolean removeLavaLakes;
     private static boolean removeRecipeButton;
 
     static {
@@ -66,6 +67,10 @@ public class Config {
         return flatBedrock;
     }
 
+    public static boolean isRemoveLavaLakes() {
+        return removeLavaLakes;
+    }
+
     public static void setFlatBedrock(boolean flatBedrock) {
         Config.flatBedrock = flatBedrock;
     }
@@ -83,6 +88,7 @@ public class Config {
     public static void bakeCommonConfig() {
         flatBedrock = COMMON.getFlatBedrock().get();
         removeWorldTopBedrock = COMMON.getRemoveWorldTopBedrock().get();
+//        removeLavaLakes = COMMON.getRemoveSurfaceLavaLake().get();
     }
 
     public static void bakeClientConfig(){

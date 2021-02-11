@@ -3,18 +3,10 @@ package fr.obelouix.gui;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import fr.obelouix.config.Config;
 import fr.obelouix.obecraft.Obecraft;
-import net.minecraft.client.AbstractOption;
-import net.minecraft.client.GameSettings;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.ToggleWidget;
-import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.client.gui.widget.button.CheckboxButton;
 import net.minecraft.client.gui.widget.list.OptionsRowList;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.BooleanOption;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.Objects;
@@ -46,12 +38,12 @@ public class ConfigScreen extends Screen {
 
     @Override
     protected void init() {
-        this.optionsRowList = new OptionsRowList(this.minecraft,
+        this.optionsRowList = new OptionsRowList(Objects.requireNonNull(this.minecraft),
                 this.width, this.height, OPTIONS_LIST_TOP_HEIGHT,
                 this.height - OPTIONS_LIST_BOTTOM_OFFSET, OPTIONS_LIST_ITEM_HEIGHT);
 
         this.optionsRowList.addOption(new BooleanOption("obecraft.configGUI.flatbedrock.title",
-        unused -> Config.isFlatBedrock(), (unused, newvalue) -> Config.setFlatBedrock(newvalue)));
+        unused -> Config.isFlatBedrock(), (unused, newValue) -> Config.setFlatBedrock(newValue)));
         this.children.add(optionsRowList);
 
         this.addButton(new Button((this.width - BUTTON_WIDTH ) / 2,
@@ -71,10 +63,8 @@ public class ConfigScreen extends Screen {
 
     @Override
     public void closeScreen() {
-       // ModSettings.save();
-        // Display the parent screen
         Config.saveCommon();
         Config.saveClient();
-        this.minecraft.displayGuiScreen(parentScreen);
+        Objects.requireNonNull(this.minecraft).displayGuiScreen(parentScreen);
     }
 }

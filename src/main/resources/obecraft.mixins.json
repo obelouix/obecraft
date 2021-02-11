@@ -13,7 +13,8 @@
     "gui.InventoryScreenMixin",
     "gui.CraftingScreenMixin",
     "gui.AbstractFurnaceScreenMixin",
-    "gui.IngameMenuScreenMixin"
+    "gui.IngameMenuScreenMixin",
+    "biome.DefaultBiomeFeaturesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

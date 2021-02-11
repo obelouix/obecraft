@@ -3,13 +3,12 @@ package fr.obelouix.config;
 import fr.obelouix.obecraft.Obecraft;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.fml.ModList;
-import org.apache.commons.lang3.tuple.Pair;
 
 public class CommonConfig {
 
     private final BooleanValue flatBedrock;
     private final BooleanValue removeWorldTopBedrock;
+//    private final BooleanValue removeSurfaceLavaLakes;
 
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("World generation");
@@ -20,6 +19,9 @@ public class CommonConfig {
                 "This only work with flatBedrock enabled (Does not require a game restart)")
                 .translation(Obecraft.MODID + ".config.common." + "removeWorldTopBedrock")
                 .define("removeWorldTopBedrock", false);
+     /*   removeSurfaceLavaLakes = builder.comment("Remove surface lava lakes")
+        .translation(Obecraft.MODID + "config.common" + "removeSurfaceLavaLake")
+        .define("removeSurfaceLavaLake", true);*/
 
         builder.pop();
     }
@@ -31,4 +33,8 @@ public class CommonConfig {
     public BooleanValue getFlatBedrock() {
         return flatBedrock;
     }
+
+/*    public BooleanValue getRemoveSurfaceLavaLake() {
+        return removeSurfaceLavaLakes;
+    }*/
 }
